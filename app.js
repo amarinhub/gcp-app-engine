@@ -8,18 +8,16 @@ var app = express();
 // google-cloud/datastore
 const model = require('./database/cloud-datastore');
 
-//app.use(morgan('combined', { stream: winston.stream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 /** Test Endpoint */
-// https://hale-post-251906.appspot.com/test
+// https://8080-dot-8699478-dot-devshell.appspot.com/getcustomers
 app.get('/test', async(req, res) => {
     res.send('Greetings from the Test controller!');
 });
 
-
-// // https://hale-post-251906.appspot.com/datastore/getcustomers
+// https://8080-dot-8699478-dot-devshell.appspot.com/getcustomer/?id=5629499534213120
 app.get('/getcustomers', async (req, res, next) => {
     model.list(10, (err, entities) => {
         if (err) {

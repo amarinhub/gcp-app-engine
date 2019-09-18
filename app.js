@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // google-cloud/datastore
-const model = require('./database/cloud-datastore');
+//const model = require('./database/cloud-datastore');
 
 //app.use(morgan('combined', { stream: winston.stream }));
 app.use(bodyParser.json());

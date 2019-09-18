@@ -11,9 +11,7 @@ app.get('/getcustomers', async (req, res, next) => {
             next(err);
             return;
         }
-        res.json({
-            customers: entities
-        });
+        res.json({ customers: entities });
     });
 });
 
@@ -29,19 +27,19 @@ app.get('/getcustomer', async (req, res, next) => {
 
 app.use((err, req, res, next) => {
     err.response = {
-      message: err.message,
-      internalCode: err.code,
+        message: err.message,
+        internalCode: err.code,
     };
     next(err);
-  });
+});
 
 var port = (process.env.PORT || '8080');
 app.set('port', port);
 
 var server = http.createServer(app);
 
-server.listen( port, function(){
-    console.log("Express Server Runing on port "+ app.get('port'));
+server.listen(port, function () {
+    console.log("Express Server Runing on port " + app.get('port'));
 });
 
 module.exports = app;

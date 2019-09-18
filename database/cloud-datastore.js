@@ -18,8 +18,8 @@ function list(limit, callAgain) {
       callAgain(err);
       return;
     }
-    
-  callAgain(null, entities.map(fromDatastore));
+
+    callAgain(null, entities.map(fromDatastore));
   });
 }
 

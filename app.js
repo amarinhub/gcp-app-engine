@@ -1,15 +1,12 @@
 // NodeJS modules for Express app - installed with NPM
 var express = require('express');
-var bodyParser = require('body-parser');
+var http = require('http');
 
 // Create the Express app 
 var app = express();
 
 // google-cloud/datastore
 const model = require('./database/cloud-datastore');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 /** Test Endpoint */
 // https://8080-dot-8699478-dot-devshell.appspot.com/getcustomers
@@ -25,7 +22,7 @@ app.get('/getcustomers', async (req, res, next) => {
             return;
         }
         res.json({
-            items: entities
+            customers: entities
         });
     });
 });
@@ -37,7 +34,7 @@ app.get('/getcustomer', async (req, res, next) => {
             next(err);
             return;
         }
-        res.json(entity);
+        res.json({ customer: entity });
     });
 });
 
@@ -51,4 +48,19 @@ app.use((err, req, res, next) => {
     next(err);
   });
 
+var port = (process.env.PORT || '8080');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+var server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen( port, function(){
+    console.log("Express Server Runing on port"+ app.get('port'));
+});
 module.exports = app;

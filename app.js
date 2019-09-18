@@ -32,7 +32,8 @@ app.get('/getcustomers', async (req, res, next) => {
     });
 });
 
-app.get('/getcustomerId', async (req, res, next) => {
+https://8080-dot-8699478-dot-devshell.appspot.com/getcustomer/?id=5629499534213120
+app.get('/getcustomer', async (req, res, next) => {
     model.read(req.query.id, (err, entity) => {
         if (err) {
             next(err);

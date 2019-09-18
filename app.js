@@ -20,27 +20,27 @@ app.get('/test', async(req, res) => {
 
 
 // // https://hale-post-251906.appspot.com/datastore/getcustomers
-// app.get('/getcustomers', async (req, res, next) => {
-//     model.list(10, (err, entities) => {
-//         if (err) {
-//             next(err);
-//             return;
-//         }
-//         res.json({
-//             items: entities
-//         });
-//     });
-// });
+app.get('/getcustomers', async (req, res, next) => {
+    model.list(10, (err, entities) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        res.json({
+            items: entities
+        });
+    });
+});
 
-// app.get('/getcustomerId', async (req, res, next) => {
-//     model.read(req.query.id, (err, entity) => {
-//         if (err) {
-//             next(err);
-//             return;
-//         }
-//         res.json(entity);
-//     });
-// });
+app.get('/getcustomerId', async (req, res, next) => {
+    model.read(req.query.id, (err, entity) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        res.json(entity);
+    });
+});
 
 app.use((err, req, res, next) => {
     // Format error and forward to generic error handler for logging and
